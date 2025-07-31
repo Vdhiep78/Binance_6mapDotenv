@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="http://localhost:3002" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIEP2_20K_1036568475</title>
+    <link rel="stylesheet" href="./layout.css"> 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./socket.io/socket.io.js"></script>
+    <style>
+        /* .upup{ color: green;}
+        .downdown{color: red;} */
+        .ZILUSDT1 {
+       color: green;
+        }
+        .ZILUSDT2 {
+            color: red;
+        }
+        .BTCUSDT1 {
+       color: green;
+        }
+        .BTCUSDT2 {
+            color: red;
+        }
+        .LINAUSDT1 {
+       color: green;
+        }
+        .LINAUSDT2 {
+            color: red;
+        }
+        .ETHUSDT1 {
+       color: green;
+        }
+        .ETHUSDT2 {
+            color: red;
+        }
+
+        .BNBUSDT1 {
+       color: green;
+        }
+        .BNBUSDT2 {
+            color: red;
+        }
+
+        .ADAUSDT1 {
+       color: green;
+        }
+        .ADAUSDT2 {
+            color: red;
+        }
+
+    </style>
+    <script>
+// khach hang goi ket noi len cong localhost3000
+        var socket = io("http://localhost:3002");
+    //    var socket2 = io("http://localhost:3000");
+// khach hang nghe thong tin tu server gui ve     
+socket.on("server-send-price11",function(data11){
+            if (data11.close > data11.open){
+                $("span#ZILUSDT").addClass(className="ZILUSDT1");
+            }else{
+                $("span#ZILUSDT").addClass(className="ZILUSDT2");
+            }
+            $("span#ZILUSDT").html(data11.close);      
+        });
+        socket.on("server-send-price12",function(Op1){
+            $("span#ZILUSDT_HL").html(Op1);
+        });
+        socket.on("server-send-price21",function(data22){
+            if (data22.close > data22.open){
+                $("span#BTCUSDT").addClass(className="BTCUSDT1");
+            }else{
+                $("span#BTCUSDT").addClass(className="BTCUSDT2");
+            }
+            $("span#BTCUSDT").html(data22.close);      
+        });
+        socket.on("server-send-price22",function(Op2){
+            $("span#BTCUSDT_HL").html(Op2);
+        });
+        socket.on("server-send-price31",function(data33){
+            if (data33.close > data33.open){
+                $("span#LINAUSDT").addClass(className="LINAUSDT1");
+            }else{
+                $("span#LINAUSDT").addClass(className="LINAUSDT2");
+            }
+            $("span#LINAUSDT").html(data33.close);      
+        });
+        socket.on("server-send-price32",function(Op3){
+            $("span#LINAUSDT_HL").html(Op3);
+        });
+        socket.on("server-send-price2",function(bla){
+           $("p#Balance").html(bla);
+        });
+        socket.on("server-send-priceBuy4",function(data){
+            $("ol#listBuy").html(data);
+        });
+        socket.on("server-send-priceSell5",function(data2){
+            $("ol#listSell").html(data2);
+        });
+        socket.on("server-send-Long6",function(data3){
+            $("span#SLBUY").html(data3);
+        });
+        socket.on("server-send-Short7",function(data4){
+            $("span#SLSELL").html(data4);
+        });
+        socket.on("server-send-mang_futuresUserTrade9",function(data6){
+            $("ol#futuresUserTrade").html(data6);
+        });
+        socket.on("server-send-deltaBuySell10",function(deltaBuySell){
+            $("span#deltaBuySell").html(deltaBuySell);
+        });
+        socket.on("server-send-ViTheNhap11",function(ViTheNhap){
+            $("span#ViTheNhap").html(ViTheNhap);
+        });
+        //sockets.on("server-send-futuresAggTradePrice12", function(futuresAggTradePrice){
+        //    $("span#Price_Stream").html(futuresAggTradePrice);
+        //});
+        socket.on("server-send-mang_futuresPositionRisk9",function(futuresPositionRisk){
+            $("ol#listfuturesPositionRisk").html(futuresPositionRisk);
+        });
+        socket.on("server-send-mang_futuresPositionRisk10",function(futuresPositionRisk_positionAmt){
+            $("span#position").html(futuresPositionRisk_positionAmt);
+        });;
+        socket.on("server-send-mang_futuresPositionRisk11",function(futuresPositionRisk_entryPrice){
+            $("span#pricePosition").html(futuresPositionRisk_entryPrice);
+        });
+        socket.on("server-send-price4",function(listAggTrade){
+        // var mLen=20
+        // let listTradsS = "<li>";
+        // for (let i = 0; i < mLen; i++) {
+        //     listTradsS =listTrads;
+        // }
+        //     $("ul#listTrads").html(listTradsS);         
+        // });
+        // var mang_listTrads=[]
+        // mang_listTrads.push(listTrads);
+        // var mLen=20
+        // let listTradsS = "<li>";
+        // for (let i = 0; i < mLen; i++) {
+        //     listTradsS += "<li>" + mang_listTrads[i] + "</li>";
+        //     $("ul#listTrads2").html(mang_listTrads);
+        // }
+        // datedata4=String(new Date(data4.eventTime)).slice(0,24)
+        // listTrads=data4.price+":"+data4.amount+":"+datedata4
+        // console.log(listTrads);
+        // var j;
+        // //var size3;
+        // let text = "<ul>";
+        // fruits.forEach(myFunction);
+        // text += "</ul>";
+        // var mang_listTrads=[]
+        
+        // const listTradsS="<ul>";
+        // // function myFunction(value) {
+        // //   text += "<li>" + value + "</li>";
+        // // } 
+        // // const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        // // let fLen = fruits.length;
+
+        // let listTradsS = "<ul>";
+        // for (let i = 0; i < mLen; i++) {
+        //      listTradsS += "<li>" + mang_listTrads[i] + "</li>";
+        // }
+        // listTradsS += "</ul>";
+
+        // let text_listTrads = "<ul>";
+        // for (let j=0 ; (j < 30 ); j++){
+        //     //mang_futuresUserTrade.
+        //     datedata4= String(new Date(data4[j].eventTime)).slice(0,24);
+        //     listTrads = data4[j].price+":"+data4[j].amount+":"+datedata4
+        //     mang_futuresUserTrade.unshift(listTrads);
+        //     text_listTrads += "<li>" + mang_futuresUserTrade[j] + "</li>";
+        // }    
+        // text_listTrads += "</ul>";
+            $("ol#listTrads").html(listAggTrade);
+        });
+        socket.on("server-send-futuresAggTradePrice12",function(futuresAggTradePrice){
+            $("span#Price_Stream").html(futuresAggTradePrice);          
+        });
+        socket.on("server-send-nhap_SL13",function(nhap_SL){
+            $("span#orderamount").html(nhap_SL);          
+        });
+        socket.on("server-send-nhap_SLRepeat14",function(nhap_SLRepeat){
+            $("span#textSolanRepeat").html(nhap_SLRepeat);          
+        });
+        socket.on("server-send-nhapSLContinue15",function(nhapSLContinue){
+            $("span#textSolgContinue").html(nhapSLContinue);          
+        });
+
+
+
+
+
+        socket.on("server-send-price221",function(data221){
+            if (data221.close > data221.open){
+                $("span#ETHUSDT").addClass(className="ETHUSDT1");
+            }else{
+                $("span#ETHUSDT").addClass(className="ETHUSDT2");
+            }
+            $("span#ETHUSDT").html(data221.close);      
+        });
+        socket.on("server-send-price2221",function(Op221){
+            $("span#ETHUSDT_HL").html(Op221);
+        });
+
+        socket.on("server-send-price2212",function(data2212){
+            if (data2212.close > data2212.open){
+                $("span#BNBUSDT").addClass(className="BNBUSDT1");
+            }else{
+                $("span#BNBUSDT").addClass(className="BNBUSDT2");
+            }
+            $("span#BNBUSDT").html(data2212.close);      
+        });
+        socket.on("server-send-price22212",function(Op2212){
+            $("span#BNBUSDT_HL").html(Op2212);
+        });
+        
+
+        socket.on("server-send-price22123",function(data22123){
+            if (data22123.close > data22123.open){
+                $("span#ADAUSDT").addClass(className="ADAUSDT1");
+            }else{
+                $("span#ADAUSDT").addClass(className="ADAUSDT2");
+            }
+            $("span#ADAUSDT").html(data22123.close);      
+        });
+        socket.on("server-send-price222123",function(Op22123){
+            $("span#ADAUSDT_HL").html(Op22123);
+        });
+
+        
+        socket.on("server-send-price999",function(data999){
+            $("span#ALL1USDT").html(data999[0]);
+            $("span#ALL2USDT").html(data999[1]);
+            $("span#ALL3USDT").html(data999[2]);
+            $("span#ALL4USDT").html(data999[3]);
+            $("span#ALL5USDT").html(data999[4]);        
+        });
+
+
+
+//bat su kien
+//============================================================
+//btnBuyZIL
+//lenh da ok
+        //var slLongShort=0.0;
+        $(document).ready(function(){        
+            $("#bntFireBuy").click(function(){                      
+                $.get("./FireBuyLimit/", function(data){
+                    console.log(data+ "FireBuyLimit OK!");
+                    $("span#thongBaoStatus3").html( "FireBuyLimit OK!");
+                });
+            });
+        });
+        $(document).ready(function(){        
+            $("#bntFireSell").click(function(){                      
+                $.get("./FireSellLimit/", function(data){
+                    console.log(data+ "FireSellLimit OK!");
+                    $("span#thongBaoStatus3").html( "FireSellLimit OK!");
+                });
+            });
+        });
+
+
+        $(document).ready(function(){        
+            $("#bntResetALLPosition").click(function(){                                                                                            
+                $.get("./ResetALLPosition/", function(data){
+                    $("ol#ResetALLPosition").html(data);
+                    $("span#thongBaoStatus2").html("Reset All Posi OK!");
+                    //console.log("da ResetALLPosition ok!");
+                   // alert("ResetALLPosition");                   
+                });
+            }); 
+        });
+
+        $(document).ready(function(){        
+            $("#btnNhap_SL").click(function(){
+                var amount = parseFloat($("#txtAmount").val());                       
+                $.get("./Nhap_SL/"+amount , function(data){
+                    var numAmount = Number(data);
+                    console.log(numAmount+ "da truyen duoc du lieu!");
+                    //alert("NHAP SO LUONG OK!");
+                    //$("span#orderamount").html(numAmount);
+                    $("span#thongBaoStatus2").html("nhap Slg OK!:"+numAmount);
+                });
+            });
+        });
+        $(document).ready(function(){        
+            $("#btnNhapSoLanRepeat").click(function(){
+                var amount = parseFloat($("#txtRepeat").val());                       
+                $.get("./Nhap_SLRepeat/"+amount , function(data){
+                    var numAmount = Number(data);
+                    console.log(numAmount+ "truyen slrepeat!");
+                    //alert("NHAP SO LUONG OK!");
+                    //$("span#textSolanRepeat").html(numAmount);
+                    $("span#thongBaoStatus3").html("nhap slrepeat OK!:"+numAmount);
+                });
+            });
+        });
+        $(document).ready(function(){           
+            $("#btnfuturesUserTrade").click(function(){                                                                                      
+                $.get("./futuresUserTrades/", function(data){
+                    $("span#thongBaoStatus2").html("check futures trades OK");
+                   // console.log(data+ "da CanCelED All !!!");                   
+                   // alert("CanCelED All !!!"); 
+                });
+            }); 
+         });
+
+        $(document).ready(function(){
+            $("#btnBuy").click(function(){                                                      
+                $.get("./buy/", function(data){ 
+                    $("span#BuySellthongBaoStatus1").html(data);                   
+                    //mangBuy1.push(data.side+"//"+data.origQty+"//"+ new Date(data.updateTime)) 
+                });
+            }); 
+         });
+        
+    //==================================================================    
+        //btnSellZIL
+        $(document).ready(function(){           
+            $("#btnSell").click(function(){                                                                       
+                $.get("./sell/", function(data){                    
+                    //mangSell1.push(data.side+"//"+data.origQty+"//"+ new Date(data.updateTime))
+                    $("span#thongBaoStatus3").html(data);                   
+                });
+            }); 
+         });
+//==================================================================
+//btnBuyContinueZIL
+         $(document).ready(function(){
+            $("#btnBuyContinue").click(function(){                                                      
+                $.get("./buyContinue/", function(data){
+                    var da=data 
+                    $("span#thongBaoStatus3").html("okB");                   
+                    //mangBuy1.push(data.side+"//"+data.origQty+"//"+ new Date(data.updateTime)) 
+                });
+            }); 
+         });
+        
+        //btnSellContinueZIL
+        $(document).ready(function(){           
+            $("#btnSellContinue").click(function(){                                                                       
+                $.get("./sellContinue/", function(data){
+                    var da=data                     
+                    //mangSell1.push(data.side+"//"+data.origQty+"//"+ new Date(data.updateTime))
+                    $("span#BuySellthongBaoStatus1").html("okS");                   
+                });
+            }); 
+         });
+
+
+//  //============================================================       
+//         //btn BuyLINA
+//         $(document).ready(function(){
+//             //alert(1);
+//             $("#btnBuyLINA").click(function(){
+//                 var amount = async()=>{
+//                     let dat= await parseFloat($("#txtAmountLINA").val());
+//                     }
+//         //        alert(amount);                                                         
+//                 $.get("./buyLINA/"+amount, function(data){
+//                     console.log(data+ "da truyen duoc du BUYLINA lieu nhung binance chua dc");                   
+//                 });
+                
+//             });
+//         });
+//     //==================================================================   
+//         //btn SellLINA
+//         $(document).ready(function(){
+//             //alert(1);
+//             $("#btnSellLINA").click(function(){
+//                 var amount = async()=>{
+//                     let dat= await parseFloat($("#txtAmountLINA").val());
+//                     }
+//         //        alert(amount);                                                         
+//                 $.get("./sellLINA/"+amount, function(data){
+//                     console.log(data+ "da truyen duoc du SELLLINA lieu nhung binance chua dc");                   
+//                 });
+//             });
+//         });
+// //============================================================
+//         //btnBuyZILLimit
+//         $(document).ready(function(){
+//             //alert(1);
+//             $("#btnBuyLimit").click(function(){
+//                 var amount = async()=>{
+//                     let dat= await parseFloat($("#txtAmountLimit").val());
+//                     }
+//                 var price = async()=>{
+//                     let dat= await parseFloat($("#txtPriceLimit").val());
+//                     }
+//             //    alert(amount);                                                         
+//                 $.get(["./buyLimit/"+price,"./buyLimit/"+amount], function(data){
+//                     console.log(data+ "da truyen duoc du BUYLimit lieu nhung binance chua dc");                   
+//                 });
+//             });
+//         });
+//       //==================================================================        
+//         //btnSellZILLimit
+//         $(document).ready(function(){        
+//             $("#btnSellLimit").click(function(){
+//                 var amount = async()=>{
+//                     let dat= await parseFloat($("#txtAmountLimit").val());
+//                     }
+//                 var price = async()=>{
+//                     let dat= await parseFloat($("#txtPriceLimit").val());
+//                     }                                                        
+//                 $.get(["./sellLimit/"+price,"./sellLimit/"+amount], function(data){
+//                     console.log(data+ "da truyen duoc SELLLimit du lieu nhung binance chua dc");                   
+//                 });
+//             });
+//         });
+
+// //============================================================
+// //btn BuyLINALimit
+//         $(document).ready(function(){
+//             //alert(1);
+//             $("#btnBuyLINALimit").click(function(){
+//                 var amount = async()=>{
+//                     let dat= await parseFloat($("#txtAmountLINALimit").val());
+//                 }
+//                 var price = async()=>{
+//                     let dat= await parseFloat($("#txtPriceLINALimit").val());
+//                 }                                                       
+//                 $.get(["./buyLINALimit/"+price,"./buyLINALimit/"+amount], function(data){
+//                     console.log(data+ "da truyen duoc du BUYLINALimit lieu nhung binance chua dc");                   
+//                 });
+//             });
+//         });
+//         //btn SellLINALimit
+//         $(document).ready(function(){
+//             //alert(1);
+//             $("#btnSellLINALimit").click(function(){
+//                 var amount = async()=>{
+//                     let dat= await parseFloat($("#txtAmountLINALimit").val());
+//                     }
+//                 var price = async()=>{
+//                     let dat= await parseFloat($("#txtPriceLINALimit").val());
+//                     }
+//         //        alert(amount);                                                         
+//                 $.get(["./sellLINALimit/"+price,"./sellLINALimit/"+amount], function(data){
+//                     console.log(data+ "da truyen duoc du SELLLINALimit lieu nhung binance chua dc");                   
+//                 });
+//             });
+//         });
+
+//============================================================
+        //btnResetBalance
+        $(document).ready(function(){        
+            $("#btnUpDatePosition").click(function(){                                                                                            
+                $.get("./UpDatePosition/", function(data){
+                    $("span#thongBaoStatus2").html(data);
+                    //console.log(data+ "da btnUpDatePosition ok!");
+                    //alert("btnUpDatePosition");                   
+                });
+            }); 
+        });
+
+        $(document).ready(function(){        
+            $("#bntfuturesPositionRisk").click(function(){                                                                                            
+                $.get("./futuresPositionRisk/", function(data){
+                    $("span#thongBaoStatus3").html(data);                 
+                });
+            }); 
+        });
+        
+        $(document).ready(function(){        
+            $("#bntmaster2").click(function(){                                                                                            
+                $.get("./master2/", function(data){
+                    $html(data);
+                    //$html(data);
+                    //alert('Ok mater2')
+                    //console.log(data+ "da btnUpDatePosition ok!");
+                    //alert("btnUpDatePosition");                   
+                });
+            }); 
+        });
+    </script>
+</head>
+<body>        
+    <div id="all">
+        <div id="all1">
+            <div id="all11"> 
+                <div id="all111">
+                    <p>
+                        <span id="ZILUSDT"></span>
+                    </p>
+                    <p>
+                        <span id="ZILUSDT_HL"></span>
+                    </p>
+                    <div class="clear16"></div> 
+                </div>
+                <div id="all112">
+                    <p>
+                        <span id="BTCUSDT"></span>
+                    </p>
+                    <p>
+                        <span id="BTCUSDT_HL"></span>
+                    </p>
+                    <div class="clear17"></div> 
+                </div>
+                <div id="all113">
+                    <p>
+                        <span id="LINAUSDT"></span>
+                    </p>
+                    <p>
+                        <span id="LINAUSDT_HL"></span>
+                    </p>
+                    <div class="clear18"></div> 
+                </div>          
+                <div class="clear0"></div>
+            </div>
+        </div>
+        <div id="all2H">
+            <div  id="all2">   
+                <div id="all21">
+
+                    <div id="Bal1">
+                        <p>Balance:</p>                    
+                    </div>                          
+                    <div  id="Bal2">       
+                        <p id="Balance"></p>           
+                    </div>
+                    <div id="Bal3">       
+                        <p>USDT</p>            
+                    </div>
+                    <div class="clear1"></div>                       
+                </div>
+                <div  id="all22"> 
+                    <div  id="text_amount">                   
+                        <input type="number" id="txtAmount" placeholder="Amount of ZIL">
+                    </div>                          
+                    <div  id="soluong">       
+                        <p>  solg:<span id="orderamount">0.000</span></p>
+                    </div>
+                    <div class="clear2"></div>            
+                </div>            
+                <div id="all23">
+                    <input type="button" id="btnNhap_SL" value="SL_BUYZIL"/>
+                    <input type="button" id="btnBuy" value="BUYZIL"/>
+                    <input type="button" id="btnSell" value="SELLZIL"/>
+                    <div class="clear3"></div>
+                </div>
+                <div  id="all22_2"> 
+                    <div  id="text_amountRepeat">                   
+                        <input type="numberRepeat" id="txtRepeat" placeholder="Amount of Repeat">
+                    </div>                          
+                    <div  id="SoLanRepeat">       
+                        <p>SlRepeat:<span id="textSolanRepeat">0</span></p>
+                    </div>
+                    <div  id="SoLgContinue">       
+                        <p>SlContinue:<span id="textSolgContinue">0.000</span></p>
+                    </div>
+                    <div class="clear4"></div>            
+                </div>            
+                <div id="all23_2">
+                    <input type="button" id="btnNhapSoLanRepeat" value="NhapSoLanRepeat"/>
+                    <input type="button" id="btnBuyContinue" value="BUYContinue"/>
+                    <input type="button" id="btnSellContinue" value="SELLContinue"/>
+                    <div class="clear5"></div>
+                </div>
+                <div class="clear6"></div>
+            </div>
+            <div id="all3">
+                <div id="all31">                
+                    <div id="all311">
+                        <span id="pricePosition">0.0000</span>
+                        <span id="position">0.0000</span> 
+                        <span id="ViTheNhap">=>-_0_-</span>      
+                        <span id="Price_Stream">0.00000</span>
+                        <button type="button", id="bntFireSell">FireSell</button>
+                        <div class="clear7"></div>
+                    </div>                       
+                </div>
+                <div id="all32">
+                    <div  id="all321">
+                        <div  id="Long_Buy">
+                            <p>BUY:<span id="SLBUY">0.0000</span></p>                                   
+                        </div>                          
+                        <div  id="Short_Sell">       
+                            <p>SELL:<span id="SLSELL">0.0000</span></p>
+                        </div>
+                        <div  id="deltaBuySelldiv">       
+                            <p>delB_S:<span id="deltaBuySell">0.0000</span></p>
+                        </div>
+                        <div  id="FireBuy">       
+                            <button type="button", id="bntFireBuy">FireBuy</button>
+                        </div>
+                        <div class="clear8"></div> 
+                    </div>
+                </div>
+                <div id="all33">
+                    <div>
+                        <div id="upDate">
+                            <button type="button", id="btnUpDatePosition">UpDatePosition</button>
+                        </div>
+                        <div id=UserTrade>
+                            <button type="button", id="btnfuturesUserTrade">futureUserTrade</button>
+                        </div>
+                        <div  id="ResetALLPos">       
+                            <button type="button", id="bntResetALLPosition">ResetALLPos</button>
+                        </div>
+                        <div id="futuresPositionRisk">       
+                            <button type="button", id="bntfuturesPositionRisk">fuPosRisk</button>
+                        </div> 
+                        <div  id="master3">
+                            <a href="master3.html"><span style="color: brown;" id="pmaster3">master3</span></a>           
+                        </div>                  
+                        <div class="clear9"></div> 
+                    </div>
+                    <div class="clear10"></div>    
+                </div>
+                <div class="clear11"></div>
+            </div>
+            <div id="all12">
+                <p>
+                    <span id="BuySellthongBaoStatus1">note1!B_Sell!
+                    </span>
+                </p>
+                <p>
+                    <span id="thongBaoStatus2">!note2!
+                    </span>                    
+                </p>
+                <p>
+                    <span id="thongBaoStatus3">!note3!
+                    </span>                    
+                </p>
+            </div>
+            <div class="clear12"></div>
+        </div>
+        <div class="clear13"></div>
+        <div id="all5">
+            
+            <!-- <ol id="UpDatePosition"></ol> -->
+            <!-- <ol id="ResetALLPosition"></ol> -->
+            <ol id="listTrads"></ol>
+            <!-- <div class="clear0"></div> -->
+        </div>
+        <div id="all6">
+            
+            <!-- <ol id="UpDatePosition"></ol> -->
+            <!-- <ol id="ResetALLPosition"></ol> -->
+            <ol id="listfuturesPositionRisk"></ol>
+            <!-- <div class="clear0"></div> -->
+        </div>
+        <div class="clear14"></div>
+        <div id="all4">
+            <div id="all41">
+                <ol id="listBuy">
+                </ol>
+            </div>    
+            <div id="all42">
+                <ol id="listSell">
+                </ol>
+            </div>
+            <div class="clear15"></div>
+        </div>
+        <div id="all7">
+            
+            <!-- <ol id="UpDatePosition"></ol> -->
+            <!-- <ol id="ResetALLPosition"></ol> -->
+            <ol id="futuresUserTrade"></ol>
+            <!-- <div class="clear0"></div> -->
+        </div>
+        <div id="all8"> 
+            <div id="all81">
+                <p>
+                    <span id="ETHUSDT">ETHUSDT:</span>
+                </p>
+                <p>
+                    <span id="ETHUSDT_HL"></span>
+                </p>
+                
+            </div>
+            <div id="all82">
+                <p>
+                    <span id="BNBUSDT">BNBUSDT:</span>
+                </p>
+                <p>
+                    <span id="BNBUSDT_HL"></span>
+                </p>
+                
+            </div>
+            <div id="all83">
+                <p>
+                    <span id="ADAUSDT">ADAUSDT:</span>
+                </p>
+                <p>
+                    <span id="ADAUSDT_HL"></span>
+                </p>
+                <p>
+                    <span id="ALLUSDT">SOL/ AVAX/ CAKE/ AXS/ C98 -- high/low/open/CLOSE/per%--</span>
+                </p>
+                <p>
+                    <span id="ALL1USDT">SOL:</span>
+                </p>
+                <p>
+                    <span id="ALL2USDT">AVAX:</span>
+                </p>
+                <p>
+                    <span id="ALL3USDT">CAKE:</span>
+                </p>
+                <p>
+                    <span id="ALL4USDT">AXS:</span>
+                </p>
+                <p>
+                    <span id="ALL5USDT">C98:</span>
+                </p>
+              
+            </div>          
+            
+        </div>        
+    </div>
+
+</body>
+</html>
